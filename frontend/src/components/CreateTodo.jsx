@@ -4,7 +4,7 @@ export function CreateTodo({fetchfun}){
     const [title,setTitle]=useState("");
     const [description,setDescription]= useState("");
 
-    return <div className="create-todo-container glass-panel">
+    return <div className="create-todo-container">
         <div className="input-group">
             <input 
                 className="glass-input"
@@ -31,7 +31,8 @@ export function CreateTodo({fetchfun}){
                 {
                     method:"POST",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${localStorage.getItem("token")}`
                     }, 
                     body: JSON.stringify({
                         title: title,
@@ -42,16 +43,13 @@ export function CreateTodo({fetchfun}){
             .then(async (res)=>{
                 const json=await res.json();
                 window.alert(json.msg);
-                await fetchfun();
+                fetchfun();
                 setTitle('');
                 setDescription('');
             })
-            .catch((error) => {
+            .catch(() => {
                 window.alert("Failed to connect to the server. Please try again.");
             });
-        }}>
-            <span>Add Task</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-        </button>
+        }}>Add Task</button>
     </div>
 }

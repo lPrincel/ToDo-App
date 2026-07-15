@@ -1,64 +1,68 @@
-# Full-Stack MERN To-Do App
+# Secure MERN To-Do Application
 
-A responsive, full-stack To-Do application built to practice modern web development using the MERN stack (MongoDB, Express, React, Node.js). 
+A full-stack To-Do list application built with the MERN stack (MongoDB, Express.js, React, Node.js). This project features a complete, secure authentication system ensuring that user data is strictly isolated and protected. 
 
-## 🚀 Features
+## ✨ Features
 
-- **Create Tasks:** Add new tasks with a title and an optional description.
-- **View Tasks:** See a list of all your pending and completed tasks.
-- **Mark as Completed:** Easily change the status of tasks with a click.
-- **RESTful API:** Robust backend API built with Express.js.
-- **Database Integration:** Persistent data storage using MongoDB and Mongoose.
-- **Data Validation:** Strict input validation using Zod to ensure data integrity.
-- **Clean UI:** A simple, intuitive, and responsive user interface built with React.
+- **User Authentication:** Secure signup and login functionality.
+- **Password Hashing:** Passwords are mathematically hashed using `bcrypt` before being stored in the database.
+- **JWT Sessions:** Stateless user sessions managed via JSON Web Tokens (JWT) stored in `localStorage`.
+- **Protected API Routes:** Custom Express middleware ensures only authenticated users can access or modify data.
+- **Data Isolation:** Users can only view, complete, and delete their own specific tasks.
+- **Modern UI:** Clean, responsive interface featuring subtle glassmorphism elements.
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **React.js** (Bootstrapped with Vite)
-- **Vanilla CSS** for clean, standard styling
-- **Fetch API** for asynchronous HTTP requests
+**Frontend:**
+- React (bootstrapped with Vite)
+- Vanilla CSS
+- `fetch` API for network requests
 
-### Backend
-- **Node.js & Express.js** for the server framework
-- **MongoDB & Mongoose** for the database schema and models
-- **Zod** for schema validation
-- **CORS** for cross-origin resource sharing
+**Backend:**
+- Node.js & Express.js
+- MongoDB & Mongoose (Database & ODM)
+- `jsonwebtoken` (Auth)
+- `bcrypt` (Security)
+- `zod` (Input Validation)
+- `cors` (Cross-Origin Resource Sharing)
 
-## 📦 Getting Started
+## 🚀 Getting Started
 
-### Prerequisites
-Make sure you have [Node.js](https://nodejs.org/) installed on your machine. You will also need a MongoDB connection (local or MongoDB Atlas).
+### 1. Clone the repository
+```bash
+git clone <https://github.com/lPrincel/ToDo-App.git>
+cd To-Do-App
+```
 
-### Installation
+### 2. Backend Setup
+Navigate to the backend directory and install dependencies:
+```bash
+cd backend
+npm install
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/lPrincel/ToDo-App.git
-   cd To-Do-App
-   ```
+Create a `.env` file in the `backend` directory and add your secret keys:
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_super_secret_jwt_key
+```
 
-2. **Setup the Backend**
-   ```bash
-   cd backend
-   npm install
-   ```
-   Create a `.env` file in the `backend` directory and add your MongoDB connection string:
-   ```env
-   MONGO_URI=your_mongodb_connection_string
-   ```
-   Start the backend server:
-   ```bash
-   node index.js
-   ```
-   *(The backend runs on http://localhost:3000)*
+Start the backend server:
+```bash
+npm run dev
+```
 
-3. **Setup the Frontend**
-   Open a new terminal window/tab:
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
+### 3. Frontend Setup
+Open a new terminal, navigate to the frontend directory, and install dependencies:
+```bash
+cd frontend
+npm install
+```
 
-4. Open the link provided by Vite (usually `http://localhost:5173`) in your browser to view the app!
+Start the React development server:
+```bash
+npm run dev
+```
+
+### 4. Open the App
+Visit `http://localhost:5173` in your browser to start managing your tasks!
